@@ -148,16 +148,18 @@ export function AnalysisForm({ onSubmit, isProcessing }: AnalysisFormProps) {
 
           {/* Camera and Analysis Parameters */}
           <div className="grid gap-4 md:grid-cols-2">
-            <div className="space-y-2">
-              <Label htmlFor="cameraIds">ID กล้อง (คั่นด้วยจุลภาค)</Label>
-              <Input
-                id="cameraIds"
-                placeholder="เช่น cam-01,cam-02,cam-03"
-                value={formData.cameraIds.join(',')}
-                onChange={(e) => handleCameraIdsChange(e.target.value)}
-                className="font-mono"
-              />
-            </div>
+            {formData.analysisType !== "one_to_one" && (
+              <div className="space-y-2">
+                <Label htmlFor="cameraIds">ID กล้อง (คั่นด้วยจุลภาค)</Label>
+                <Input
+                  id="cameraIds"
+                  placeholder="เช่น cam-01,cam-02,cam-03"
+                  value={formData.cameraIds.join(',')}
+                  onChange={(e) => handleCameraIdsChange(e.target.value)}
+                  className="font-mono"
+                />
+              </div>
+            )}
             <div className="space-y-2">
               <Label htmlFor="numCameras">จำนวนกล้องขั้นต่ำที่ต้องเจอ</Label>
               <Input
